@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@auth/prisma-adapter": "^2.11.1",
+    "@conform-to/react": "^1.17.1",
+    "@conform-to/zod": "^1.17.1",
     "@prisma/client": "^6.9.0",
     "@prisma/extension-accelerate": "^3.0.1",
     "class-variance-authority": "^0.7.1",
@@ -21,7 +23,9 @@
     "radix-ui": "^1.4.3",
     "react": "19.2.3",
     "react-dom": "19.2.3",
-    "tailwind-merge": "^3.5.0"
+    "recharts": "2.15.0",
+    "tailwind-merge": "^3.5.0",
+    "zod": "^3.25.76"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
