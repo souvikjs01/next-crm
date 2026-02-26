@@ -41,7 +41,7 @@ export default async function layout({children}: { children: React.ReactNode}) {
   // const data = await getUserData(session.user?.id as string)
   return (
     <>
-      <div className="grid min-h-screen w-full md:gird-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
+      <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
         <div className="hidden border-r bg-muted/40 md:block">
           <div className="flex flex-col max-h-screen h-full gap-2">
             <div className="h-14 flex items-center border-b px-4 lg:h-15 lg:px-6">
@@ -110,12 +110,11 @@ export default async function layout({children}: { children: React.ReactNode}) {
               </DropdownMenu>
             </div>
           </header>
-          <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
+          <main className="flex flex-1 flex-col gap-3 p-3 lg:gap-6 lg:p-6 w-full overflow-hidden">
             {children}
           </main>
         </div>
       </div>
-      {/* <Toaster richColors closeButton theme="light" /> */}
     </>
   )
 }

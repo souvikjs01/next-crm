@@ -1,3 +1,4 @@
+import ContactList from '@/components/dashboard/ContactList'
 import { buttonVariants } from '@/components/ui/button'
 import { 
     Card, 
@@ -8,7 +9,6 @@ import {
 } from '@/components/ui/card'
 import { PlusIcon } from 'lucide-react'
 import Link from 'next/link'
-// import InvoiceList from './_components/InvoiceList'
 
 export default function page() {
   return (
@@ -25,8 +25,7 @@ export default function page() {
         </div>
       </CardHeader>
       <CardContent>
-        {/* <InvoiceList /> */}
-        list
+        <ContactList />
       </CardContent>
     </Card>
   )
