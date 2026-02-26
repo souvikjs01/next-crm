@@ -12,7 +12,7 @@ import Link from 'next/link'
 
 export default function page() {
   return (
-    <Card>
+    <Card className=' rounded-sm'>
       <CardHeader>
         <div className="flex items-center justify-between">
           <div>

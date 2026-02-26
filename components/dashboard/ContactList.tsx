@@ -9,6 +9,7 @@ import {
 } from "../ui/table";
 import { requireUser } from "@/lib/hooks";
 import ContactActions from "./ContactActions";
+import EmptyState from "./EmptyState";
 
 
 
@@ -42,7 +43,14 @@ export default async function ContactList() {
 
   return (
     <>
-        <div className="w-full overflow-x-auto">
+        {data.length === 0 ? (
+            <EmptyState
+                title="No contact found"
+                description="Create contact to get started"
+                buttontext="Create contact"
+                href="/dashboard/contact/create"
+            />
+        ) : (
             <Table>
                 <TableHeader>
                     <TableRow>
@@ -83,7 +91,7 @@ export default async function ContactList() {
                     ))}
                 </TableBody>
             </Table>
-        </div>
+        )}
     </>
   )
 }

@@ -47,7 +47,7 @@ export default async function layout({children}: { children: React.ReactNode}) {
             <div className="h-14 flex items-center border-b px-4 lg:h-15 lg:px-6">
               <Link href="/" className="flex items-center gap-2">
                 <p className="text-2xl font-bold">
-                  NextCrm
+                  NextCRM
                 </p>
               </Link>
             </div>

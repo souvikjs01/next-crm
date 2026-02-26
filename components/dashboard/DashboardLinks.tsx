@@ -1,9 +1,14 @@
 "use client"
 import { cn } from '@/lib/utils';
-import { HomeIcon, Users2 } from 'lucide-react';
+import { 
+  HomeIcon, 
+  Users2,
+  Building,
+  TrendingUp,
+  Activity
+} from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import React from 'react'
 
 
 export const links = [
@@ -19,6 +24,24 @@ export const links = [
     href: "/dashboard/contact",
     icon: Users2,
   },
+  {
+    id: 2,
+    name: "Company",
+    href: "/dashboard/company",
+    icon: Building
+  },
+  {
+    id: 3,
+    name: "Deals",
+    href: "/dashboard/deals",
+    icon: TrendingUp
+  },
+  {
+    id: 4,
+    name: "Activity",
+    href: "/dashboard/activity",
+    icon: Activity
+  }
 ];
 
 export default function DashboardLinks() {
