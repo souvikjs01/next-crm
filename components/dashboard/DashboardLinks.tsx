@@ -26,8 +26,8 @@ export const links = [
   },
   {
     id: 2,
-    name: "Company",
-    href: "/dashboard/company",
+    name: "Companies",
+    href: "/dashboard/companies",
     icon: Building
   },
   {

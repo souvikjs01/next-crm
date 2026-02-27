@@ -7,7 +7,7 @@ export const onboardingSchema = z.object({
 });
 
 export const contactSchema = z.object({
-    contactName: z.string().min(1, "Invoice Name is required"),
+    contactName: z.string().min(1, "Contact Name is required"),
     
     email: z.string().min(1, "Email is required").email("Invalid email address"),
     
@@ -47,5 +47,30 @@ export enum CHANNELS {
   BLOG = "Blog"
 }
 
-// Inferred TypeScript type
 export type LeadFormData = z.infer<typeof contactSchema>;
+
+export enum COMPANY_TYPE {
+    PROSPECT = "Prospect",
+    PARTNER = "Partner",
+    RESELLER = "Reseller",
+    VENDOR = "Vendor",
+    OTHER = "Other",
+}
+
+export const companySchema = z.object({
+    icon: z.string().url("invalid URL").optional(),
+    name: z.string().min(2, "name is required").max(100),
+    phone: z.string()
+    .regex(/^\+?[1-9][\d\s]{6,20}$/, "Invalid phone number")
+    .optional()
+    .or(z.literal("")),
+    owner: z.string().optional(),
+    domain: z.string().min(2, "domain is required"),
+    industry: z.string().min(2, "industry is required"),
+    type: z.enum(["Prospect", "Partner", "Reseller", "Vendor", "Other"]).default("Other"),
+    city: z.string().min(2, "city is required"),
+    annualRevenue: z.string().min(1, "annual revenue is required"),
+    linkedinPage: z.string().url("invalid URL")
+});
+
+export type CompanyFormData = z.infer<typeof companySchema>;

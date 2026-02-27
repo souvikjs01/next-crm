@@ -1,9 +1,10 @@
 import { requireUser } from '@/lib/hooks';
-import CreateContact from './_components/CreateContact';
+import CreateCompany from '../_components/CreateCompany';
 
 export default async function page() {
   const session = await requireUser()
+
   return (
-    <CreateContact />
+    <CreateCompany />
   );
 }
