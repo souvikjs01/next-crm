@@ -47,3 +47,37 @@ export async function DeleteCompany(companyId: string) {
 
     return redirect("/dashboard/companies");
 }
+
+
+export async function editCompany(prevState: any, formData: FormData) {
+    const session = await requireUser();
+
+    const submission = parseWithZod(formData, {
+        schema: companySchema,
+    });
+
+    if (submission.status !== "success") {
+        return submission.reply();
+    }
+
+    await prisma.company.update({
+        where: {
+            id: formData.get("id") as string,
+            userId: session.user?.id,
+        },
+        data: {
+            icon: submission.value.icon,
+            name: submission.value.name,
+            phone: submission.value.phone,
+            owner: submission.value.owner,
+            domain: submission.value.domain,
+            industry: submission.value.industry,
+            city: submission.value.city,
+            type: submission.value.type,
+            annualRevenue: submission.value.annualRevenue,
+            linkedinPage: submission.value.linkedinPage,
+        },
+    });
+
+    return redirect("/dashboard/companies");
+}

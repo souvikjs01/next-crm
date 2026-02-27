@@ -3,6 +3,7 @@ import EditContact from '@/components/dashboard/EditContact';
 import { requireUser } from '@/lib/hooks';
 import { prisma } from '@/lib/prisma';
 import { notFound } from 'next/navigation';
+import EditCompany from '../_components/EditCompany';
 
 async function getData(companyId: string, userId: string) {
     const data = await prisma.company.findUnique({
@@ -27,9 +28,6 @@ export default async function page({ params }: {params: Params}) {
   const data = await getData(companyId, session.user?.id as string)
   
   return (
-    <></>
-    // <EditContact
-    //     data={data}
-    // />
+        <EditCompany data={data}/>
   )
 }
