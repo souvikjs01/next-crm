@@ -35,3 +35,15 @@ export async function createCompany(prevState: any, formData: FormData) {
     redirect("/dashboard/companies")
 }
 
+export async function DeleteCompany(companyId: string) {
+    const session = await requireUser();
+
+    await prisma.company.delete({
+        where: {
+            userId: session.user?.id,
+            id: companyId,
+        },
+    });
+
+    return redirect("/dashboard/companies");
+}

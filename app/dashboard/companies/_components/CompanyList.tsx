@@ -9,6 +9,7 @@ import {
     TableHeader, 
     TableRow 
 } from "@/components/ui/table";
+import CompanyActions from "./CompanyActions";
 
 async function getCompanies(userId: string) {
     const data = await prisma.company.findMany({
@@ -77,7 +78,7 @@ export default async function CompanyList() {
                             <TableCell>{company.city}</TableCell>
                             <TableCell>{company.industry}</TableCell>
                             <TableCell className="text-right">
-                                {/* <ContactActions id={contact.id} /> */}
+                                <CompanyActions id={company.id} />
                             </TableCell>
                         </TableRow>
                     ))}
