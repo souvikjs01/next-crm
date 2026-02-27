@@ -25,7 +25,7 @@ export default function CompanyActions({id}: {id: string}) {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuItem asChild>
-          <Link href={`/dashboard/companies/${id}`}>
+          <Link href={`/dashboard/companies/${id}/edit`}>
             <Pencil className="size-4 mr-2" /> Edit Company
           </Link>
         </DropdownMenuItem>

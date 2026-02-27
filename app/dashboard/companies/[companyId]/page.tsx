@@ -1,16 +1,28 @@
+import { requireUser } from "@/lib/hooks";
+import CompanyDetail from "../_components/CompanyDetails";
+import { prisma } from "@/lib/prisma";
+import { notFound } from "next/navigation";
 
-import EditContact from '@/components/dashboard/EditContact';
-import { requireUser } from '@/lib/hooks';
-import { prisma } from '@/lib/prisma';
-import { notFound } from 'next/navigation';
-import EditCompany from '../_components/EditCompany';
-
-async function getData(companyId: string, userId: string) {
+async function getCompany(companyId: string, userId: string) {
     const data = await prisma.company.findUnique({
         where: {
             id: companyId,
-            userId: userId,
+            userId,
         },
+        select: {
+            id: true,
+            name: true,
+            annualRevenue: true,
+            city: true,
+            createdAt: true,
+            domain: true,
+            icon: true,
+            industry: true,
+            linkedinPage: true,
+            phone: true,
+            type: true,
+            owner: true, 
+        }
     });
 
     if (!data) {
@@ -22,12 +34,11 @@ async function getData(companyId: string, userId: string) {
 
 type Params = Promise<{ companyId: string }>;
 
-export default async function page({ params }: {params: Params}) {
-  const { companyId } = await params;
-  const session = await requireUser()
-  const data = await getData(companyId, session.user?.id as string)
-  
-  return (
-        <EditCompany data={data}/>
-  )
+export default async function page({params}: {params: Params}) {
+    const { companyId } = await params
+    const session = await requireUser()
+    const data = await getCompany(companyId, session.user?.id as string)
+    return (
+        <CompanyDetail company={data}/>
+    )
 }

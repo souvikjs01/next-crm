@@ -10,6 +10,7 @@ import {
     TableRow 
 } from "@/components/ui/table";
 import CompanyActions from "./CompanyActions";
+import Link from "next/link";
 
 async function getCompanies(userId: string) {
     const data = await prisma.company.findMany({
@@ -19,16 +20,10 @@ async function getCompanies(userId: string) {
         select: {
             id: true,
             name: true,
-            city: true,
-            icon: true,
-            annualRevenue: true,
             createdAt: true,
-            domain: true,
-            industry: true,
-            linkedinPage: true,
             phone: true,
-            type: true,
-            owner: true,
+            city: true,
+            industry: true
         },
 
         orderBy: {
@@ -67,7 +62,11 @@ export default async function CompanyList() {
                 <TableBody>
                     {data.map((company) => (
                         <TableRow key={company.id}>
-                            <TableCell>{company.name}</TableCell>
+                            <TableCell>
+                                <Link href={`/dashboard/companies/${company.id}`}>
+                                    {company.name}
+                                </Link>
+                            </TableCell>
                             <TableCell>
                                 {new Intl.DateTimeFormat("en-US", {
                                     dateStyle: "medium",
